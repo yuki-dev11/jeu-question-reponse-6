@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Carte à retourner</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      font-family: sans-serif;
+    }
+
+    .card-container {
+      perspective: 1000px;
+    }
+
+    .card {
+      width: 300px;
+      height: 400px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      cursor: pointer;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-front img, .card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="card" onclick="flipCard(this)">
+      <div class="card-face card-front">
+        <img src="image-question-6.png" alt="Question">
+      </div>
+      <div class="card-face card-back">
+        <img src="image-reponse-6.png" alt="Réponse">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function flipCard(card) {
+      card.classList.toggle('flipped');
+    }
+  </script>
+
+</body>
+</html>
